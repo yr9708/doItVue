@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue Router simple</title>
+    
+</head>
+<body>
+    <div id="app">
+        <h1>뷰 라우터 예제</h1>
+        <p>
+            <router-link to="/main">Main</router-link>
+            <router-link to="/login">Login</router-link>
+        </p>
+        <router-view></router-view> <!-- template이 보여지는 곳 -->
+        
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.2/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue-router@3.0.1/dist/vue-router.js"></script>
+    <script>
+        var Main = { template : '<div>main</div>' };
+        var Login = { template : '<div>login</div>' };
+
+        var routes = [
+            { path : '/main',component: Main},
+            { path : '/login',component: Login}
+        ];
+
+        var router = new VueRouter({
+            mode : 'history', //url 해시값 없애기
+            routes
+        });
+
+        new Vue({
+            router
+        }).$mount('#app'); // el 대신에 쓰는 표현, route에서는 이렇게 사용하는 편
+        
+    </script>
+</body>
+</html>

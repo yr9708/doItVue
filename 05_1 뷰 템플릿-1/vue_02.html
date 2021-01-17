@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>디렉티브</title>
+</head>
+<body>
+    <div id="app">
+        <a v-if="flag">두잇 Vue.js</a>
+        <ul>
+            <li v-for="system in systems">{{ system }}</li>
+        </ul>
+        <p v-show="flag">두잇</p>
+        <h5 v-bind:id="uid">뷰 입문서</h5>
+        <button v-on:click="popupAlter">경고 창 버튼</button>
+    </div>
+    <hr>
+    <h2>이벤트 처리</h2>
+    <div id="app2">
+        <button v-on:click="clickBtn(10)">버튼</button>
+    </div>
+    <hr>
+    <h2>event 인자를 이용해 화면 요소의 돔 이벤트에 접근하기</h2>
+    <div id="app3">
+        <button v-on:click="clickBtn">클릭</button>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.2/dist/vue.js"></script>
+    <script>
+        new Vue({
+            el:"#app",
+            data:{
+                flag:false,
+                systems:[
+                    '로건리','이제훈','지창욱','공유','서강준'
+                ],
+                uid:10
+            },
+            methods:{
+                popupAlter:function(){
+                    return alert("경고 창 표시");
+                }
+            }
+        });
+
+        new Vue({
+            el:'#app2',
+            methods:{
+                clickBtn:function(num){
+                    return alert("이거슨 버튼 "+num);
+                }
+            }
+        });
+
+        new Vue({
+            el:"#app3",
+            methods:{
+                clickBtn:function(evnet){
+                    console.log(event); 
+                    // console에 나오는 마우스 이벤트 객체
+                }
+            }
+        })
+    </script>
+
+    
+</body>
+</html>
